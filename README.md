@@ -1,1 +1,1 @@
-# LLM_MBSE
+# GPT_MBSE

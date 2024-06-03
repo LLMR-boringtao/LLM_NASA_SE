@@ -2,7 +2,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 from pytest import mark
-from backend.agents.extractor import Extractor as Agent
+from backend.agents.extractor_img import Extractor as Agent
 
 
 @mark.agent

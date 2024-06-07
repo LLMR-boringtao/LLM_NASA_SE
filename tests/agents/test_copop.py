@@ -2,11 +2,11 @@ import warnings
 warnings.filterwarnings("ignore")
 
 from pytest import mark
-from backend.agents.extractor_img import Extractor as Agent
+from backend.agents.conop import COPOP as Agent
 
 
 @mark.agent
-@mark.extractor
+@mark.copop
 class AgentTests:
     def test_agent_behaviours(self):
         request = """Extract the data from the request and context."""

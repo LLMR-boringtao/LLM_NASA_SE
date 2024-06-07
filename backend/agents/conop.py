@@ -11,35 +11,33 @@ llm_config = {
     "config_list": config_list,
     "max_tokens": 4000,
     "seed": 42,
-    "temperature": 0,
+    "temperature": 0
 }
 extractor = MultimodalConversableAgent(
     name="extractor",
-    max_consecutive_auto_reply=5,
     llm_config=llm_config,
+    system_message="I am an extractor agent",
 )
 
 user_proxy = autogen.UserProxyAgent(
     name="user_proxy",
-    system_message="I am a user proxy agent",
+    llm_config=llm_config,
+    human_input_mode="NEVER",
+    system_message="Reply TERMINATE if the task has been solved at full satisfaction. Otherwise, reply CONTINUE, or the reason why the task is not solved yet.",
     is_termination_msg=lambda x: x.get("content", "").rstrip().endswith("TERMINATE"),
-    human_input_mode="TERMINATE",
     max_consecutive_auto_reply=0,
     code_execution_config={
         "use_docker": False,
-    },
+    }
 )
 
-message = """
-提取商品及金额信息.
-使用中文.
-列表输出商品及金额信息.
-<img data/invoice.jpg>.
+task = """
+2加2等于多少？
 """
 
-user_proxy.initiate_chat(extractor, message=message)
+user_proxy.initiate_chat(extractor, message=task)
 
-class Extractor:
+class COPOP:
     def __init__(self, request, context=""):
         self.request = request
         self.context = context

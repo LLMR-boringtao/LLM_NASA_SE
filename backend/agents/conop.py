@@ -13,10 +13,10 @@ llm_config = {
     "seed": 42,
     "temperature": 0
 }
-extractor = MultimodalConversableAgent(
-    name="extractor",
+copop = MultimodalConversableAgent(
+    name="copop",
     llm_config=llm_config,
-    system_message="I am an extractor agent",
+    system_message="I am a copop agent",
 )
 
 user_proxy = autogen.UserProxyAgent(
@@ -35,7 +35,7 @@ task = """
 2加2等于多少？
 """
 
-user_proxy.initiate_chat(extractor, message=task)
+user_proxy.initiate_chat(copop, message=task)
 
 class COPOP:
     def __init__(self, request, context=""):
@@ -54,5 +54,4 @@ class COPOP:
     def actor(self):
         query = self.perceiver()
         result = query
-
         return result

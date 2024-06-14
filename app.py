@@ -44,7 +44,7 @@ def run():
     task = data["message"]
     user_proxy.initiate_chat(manager, message=task)
 
-    messages = [msg for msg in user_proxy.chat_messages[manager] if msg['role'] == 'user']
+    messages = [msg['content'] for msg in user_proxy.chat_messages[manager] if msg['role'] == 'user']
     return app.response_class(
         response=json.dumps(messages, ensure_ascii=False),
         mimetype='application/json'

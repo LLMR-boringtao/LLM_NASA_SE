@@ -28,7 +28,7 @@ user_proxy = autogen.UserProxyAgent(
 )
 
 groupchat=autogen.GroupChat(agents=[assistant, user_proxy], messages=[])
-manager = autogen.GroupChatManager(groupchat=groupchat, llm_config=llm_config)
+manager = autogen.GroupChatManager(groupchat=groupchat, llm_config=llm_config, speaker_selection_method='round_robin')
 
 from flask import Flask, jsonify, render_template, redirect, request
 app = Flask(__name__)

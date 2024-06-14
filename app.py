@@ -45,5 +45,8 @@ def run():
     user_proxy.initiate_chat(manager, message=f"how to {task}?")
 
     messages = user_proxy.chat_messages[manager]
-    return jsonify(messages)
+    return app.response_class(
+        response=json.dumps(messages, ensure_ascii=False),
+        mimetype='application/json'
+    )
 

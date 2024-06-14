@@ -9,7 +9,7 @@ from backend.agents.conop import COPOP as Agent
 @mark.copop
 class AgentTests:
     def test_agent_behaviours(self):
-        request = """Extract the data from the request and context."""
+        request = """Concept of Operations"""
         context = """"""
         agent_instance = Agent(request, context)
         result = agent_instance.actor()

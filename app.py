@@ -42,7 +42,7 @@ def index():
 def run():
     data = request.get_json()
     task = data["message"]
-    user_proxy.initiate_chat(manager, message=f"how to {task}?")
+    user_proxy.initiate_chat(manager, message=task)
 
     messages = user_proxy.chat_messages[manager]
     return app.response_class(

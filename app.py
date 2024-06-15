@@ -31,8 +31,11 @@ groupchat=autogen.GroupChat(agents=[assistant, user_proxy], messages=[], speaker
 manager = autogen.GroupChatManager(groupchat=groupchat, llm_config=llm_config)
 
 from flask import Flask, jsonify, render_template, redirect, request
+from flask_socketio import SocketIO
+
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
+socket_io = SocketIO(app)
 
 @app.route("/")
 def index():
@@ -44,7 +47,8 @@ def run():
     task = data["message"]
     user_proxy.initiate_chat(manager, message=task)
 
-    messages = [msg['content'] for msg in user_proxy.chat_messages[manager] if msg['role'] == 'user']
+    # messages = [msg for msg in user_proxy.chat_messages[manager] if msg['role'] == 'user']
+    messages = [msg for msg in user_proxy.chat_messages[manager]]
     return app.response_class(
         response=json.dumps(messages, ensure_ascii=False),
         mimetype='application/json'

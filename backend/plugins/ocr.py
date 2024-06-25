@@ -18,7 +18,7 @@ class OCRAgent:
         )
 
     def actor(self):
-        file_extractor = {".pdf": self.parser}
+        file_extractor = {".pdf": self.parser, ".docx": self.parser, ".doc": self.parser, ".txt": self.parser}
         documents = SimpleDirectoryReader(input_dir=self.request, file_extractor=file_extractor).load_data()
         result = documents[0].text
     

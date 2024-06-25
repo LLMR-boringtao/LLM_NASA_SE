@@ -2,7 +2,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 from pytest import mark
-from backend.agents.ocr import OCRAgent as Agent
+from backend.plugins.ocr import OCRAgent as Agent
 
 @mark.agent
 @mark.ocr

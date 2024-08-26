@@ -9,7 +9,7 @@ from backend.plugins.rag import RAGAgent as Agent
 @mark.rag
 class AgentTests:
     def test_agent_behaviours(self):
-        request = """backend/data/market"""
+        request = """backend/data/nasa/img"""
         agent_instance = Agent(request)
         result = agent_instance.actor()
         assert result is not None

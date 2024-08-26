@@ -18,13 +18,7 @@ class OCRAgent:
         )
 
     def actor(self):
-        file_extractor = {".pdf": self.parser}
+        file_extractor = {".png": self.parser}
         result = SimpleDirectoryReader(input_dir=self.request, file_extractor=file_extractor).load_data()
-
-        # convert the result to a string
-        result = str(result)
-        # save the result to a file
-        with open("backend/data/market/market.txt", "w") as f:
-            f.write(result)
     
         return result

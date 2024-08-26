@@ -44,7 +44,7 @@ class RAGAgent:
         self.openai_embedding = OpenAIEmbedding(api_key=os.getenv("OPENAI_API_KEY"))
 
     def perceiver(self):
-        file_extractor = {".pdf": self.parser, ".docx": self.parser, ".doc": self.parser, ".txt": self.parser}
+        file_extractor = {".pdf": self.parser, ".png": self.parser}
         query = SimpleDirectoryReader(input_dir=self.request, file_extractor=file_extractor).load_data()
         return query
 
@@ -74,7 +74,7 @@ class RAGAgent:
             similarity_top_k=5, node_postprocessors=[reranker]
         )
 
-        question = "公司的优势是什么？"
+        question = "System engineering's definition？"
         response_1 = raw_query_engine.query(question)
         print("\n***********Basic Query Engine***********")
         print(response_1)

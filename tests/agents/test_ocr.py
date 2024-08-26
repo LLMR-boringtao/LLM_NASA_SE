@@ -8,7 +8,7 @@ from backend.plugins.ocr import OCRAgent as Agent
 @mark.ocr
 class AgentTests:
     def test_agent_behaviours(self):
-        request = """/Users/boringtao/Projects/NASA/backend/agents/data/market"""
+        request = """backend/data/market"""
         agent_instance = Agent(request)
         result = agent_instance.actor()
         print(result)
